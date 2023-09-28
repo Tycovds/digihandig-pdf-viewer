@@ -6,8 +6,9 @@ const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Serve the static PDF.js viewer files
-app.use('/pdfjs', express.static(path.join(__dirname, 'pdfjs')));
+// Update the path to the pdfjs folder based on the manual move to 'public'
+const pdfjsDirectory = path.join(__dirname, 'public', 'pdfjs');
+app.use('/pdfjs', express.static(pdfjsDirectory));
 
 // Serve the index.html file from the 'public' folder
 app.get('/', (req, res) => {
@@ -46,7 +47,7 @@ function saveCacheToFile() {
 
 // Route to download and display the PDF
 app.get('/pdf', (req, res) => {
-  const { fileUrl } = req.query;
+  const { fileUrl, downloadable } = req.query;
 
   if (!fileUrl) {
     return res.status(400).send('Missing fileUrl parameter');
@@ -55,7 +56,7 @@ app.get('/pdf', (req, res) => {
   // Check if the PDF has already been downloaded
   if (pdfCache.has(fileUrl)) {
     const uniqueFilename = pdfCache.get(fileUrl);
-    const viewerUrl = `/pdfjs/web/viewer.html?file=/uploads/${uniqueFilename}`;
+    const viewerUrl = `/pdfjs/web/${downloadable === 'true' ? 'viewer.html' : 'pdf-viewer.html'}?file=/uploads/${uniqueFilename}`;
     return res.redirect(viewerUrl);
   }
 
@@ -77,8 +78,8 @@ app.get('/pdf', (req, res) => {
       // Save the cache to the file
       saveCacheToFile();
 
-      // Redirect to the viewer.html page with the downloaded PDF file as a parameter
-      const viewerUrl = `/pdfjs/web/viewer.html?file=/uploads/${uniqueFilename}`;
+      // Redirect to the appropriate viewer based on the "downloadable" parameter
+      const viewerUrl = `/pdfjs/web/${downloadable === 'true' ? 'viewer.html' : 'pdf-viewer.html'}?file=/uploads/${uniqueFilename}`;
       res.redirect(viewerUrl);
     });
 });
