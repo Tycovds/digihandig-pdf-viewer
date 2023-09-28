@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-:root {
+ :root {
   --highlight-bg-color: rgba(180, 0, 170, 1);
   --highlight-selected-bg-color: rgba(0, 100, 0, 1);
 }
@@ -1731,6 +1731,7 @@ body {
 
 #toolbarViewer {
   height: 32px;
+	background: rgb(10, 109, 122);
 }
 
 #loadingBar {
