@@ -25,6 +25,8 @@
   }
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
+
 .textLayer {
   position: absolute;
   text-align: initial;
@@ -1729,9 +1731,16 @@ body {
   border-bottom: var(--toolbar-border-bottom);
 }
 
+/* Toolbar */
 #toolbarViewer {
   height: 32px;
 	background: rgb(10, 109, 122);
+}
+#secondaryToolbar span {
+  font-family: 'Karla', sans-serif;
+}
+#secondaryToolbar{
+  background: rgb(10, 109, 122);
 }
 
 #loadingBar {
@@ -2093,7 +2102,8 @@ body {
 
 .splitToolbarButton > .toolbarButton:is(:hover, :focus-visible),
 .dropdownToolbarButton:hover {
-  background-color: var(--button-hover-color);
+  /* background-color: var(--button-hover-color); */
+  background-color: rgb(2 90 102);
 }
 .splitToolbarButton > .toolbarButton {
   position: relative;
@@ -2131,10 +2141,12 @@ body {
 }
 
 .toolbarButton:is(:hover, :focus-visible) {
-  background-color: var(--button-hover-color);
+  /* background-color: var(--button-hover-color); */
+  background: rgb(2 90 102);
 }
 .secondaryToolbarButton:is(:hover, :focus-visible) {
-  background-color: var(--doorhanger-hover-bg-color);
+  /* background-color: var(--doorhanger-hover-bg-color); */
+  background: rgb(2 90 102);
   color: var(--doorhanger-hover-color);
 }
 
@@ -2188,10 +2200,13 @@ body {
   padding: 1px 0 2px;
   padding-inline-start: 6px;
   border: none;
-  background-color: var(--dropdown-btn-bg-color);
+  /* background-color: var(--dropdown-btn-bg-color); */
+  background-color: rgb(2 90 102);
+
 }
 .dropdownToolbarButton > select:is(:hover, :focus-visible) {
-  background-color: var(--button-hover-color);
+  /* background-color: var(--button-hover-color); */
+  background-color: rgb(2 90 102);
   color: var(--toggled-btn-color);
 }
 .dropdownToolbarButton > select > option {
@@ -2225,7 +2240,7 @@ body {
 }
 
 .toolbarButton::before {
-  opacity: var(--toolbar-icon-opacity);
+  opacity: 1;
   top: 6px;
   left: 6px;
 }
@@ -2479,16 +2494,19 @@ a:is(.toolbarButton, .secondaryToolbarButton)[href="#"] {
   margin: 6px 0;
   height: 1px;
   width: 100%;
-  background-color: var(--doorhanger-separator-color);
+  /* background-color: var(--doorhanger-separator-color); */
+  background: rgb(10, 109, 122);
 }
 
 .toolbarField {
   padding: 4px 7px;
   margin: 3px 0;
   border-radius: 2px;
-  background-color: var(--field-bg-color);
+  /* background-color: var(--field-bg-color); */
+  background-color: rgb(2 90 102);
   background-clip: padding-box;
-  border: 1px solid var(--field-border-color);
+  /* border: 1px solid var(--field-border-color); */
+  border: 1px solid rgb(10, 109, 122);
   box-shadow: none;
   color: var(--field-color);
   font-size: 12px;
