@@ -1389,7 +1389,8 @@
   --scrollbar-color: auto;
   --scrollbar-bg-color: auto;
   --toolbar-icon-bg-color: rgba(0, 0, 0, 1);
-  --toolbar-icon-hover-bg-color: rgba(0, 0, 0, 1);
+  --toolbar-icon-hover-bg-color: rgba(0255, 255, 255, 1);
+  
 
   --sidebar-narrow-bg-color: rgba(212, 212, 215, 0.9);
   --sidebar-toolbar-bg-color: rgba(245, 246, 247, 1);
@@ -1421,7 +1422,7 @@
   --thumbnail-selected-color: rgba(0, 0, 0, 0.2);
   --doorhanger-bg-color: rgba(255, 255, 255, 1);
   --doorhanger-border-color: rgba(12, 12, 13, 0.2);
-  --doorhanger-hover-color: rgba(12, 12, 13, 1);
+  --doorhanger-hover-color: rgba(255, 255, 255, 1);
   --doorhanger-hover-bg-color: rgba(237, 237, 237, 1);
   --doorhanger-separator-color: rgba(222, 222, 222, 1);
   --dialog-button-border: none;
@@ -1524,6 +1525,8 @@
   }
 }
 
+
+
 @media screen and (forced-colors: active) {
   :root {
     --button-hover-color: Highlight;
@@ -1558,6 +1561,13 @@
   :root {
     --sidebar-transition-duration: 0;
   }
+}
+
+:root {
+  --toolbar-icon-bg-color: rgba(255, 255, 255, 1);
+  --main-color: rgba(255, 255, 255, 1);
+  --toggled-btn-color: rgba(255, 255, 255, 1);
+
 }
 
 * {
@@ -2528,6 +2538,7 @@ a:is(.toolbarButton, .secondaryToolbarButton)[href="#"] {
   width: 40px;
   background-size: 0 0;
   transition-property: none;
+  color: #ffffff;
 }
 #pageNumber.visiblePageIsLoading {
   background-image: var(--loading-icon);
