@@ -26,7 +26,7 @@ See https://github.com/adobe-type-tools/cmap-resources
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="google" content="notranslate">
-  <title>PDF.js viewer</title>
+  <title>Digihandig Lesmateriaal</title>
 
   <!-- This snippet is used in production (included from viewer.html) -->
   <link rel="resource" type="application/l10n" href="locale/locale.properties">
@@ -35,6 +35,27 @@ See https://github.com/adobe-type-tools/cmap-resources
   <link rel="stylesheet" href="viewer.css">
 
   <script src="viewer.js"></script>
+	  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CM4X31PP3J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  // Get the file title from the query parameters
+  const params = new URLSearchParams(window.location.search);
+  const fileTitle = params.get('title');
+
+  // Send a custom event with the file title
+  gtag('event', 'File Viewed', {
+    event_category: 'PDF',
+    event_label: fileTitle,
+  });
+
+  gtag('config', 'G-CM4X31PP3J');
+</script>
 </head>
 
 <body tabindex="1">
@@ -311,7 +332,11 @@ See https://github.com/adobe-type-tools/cmap-resources
                 data-l10n-id="open_file">
                 <span data-l10n-id="open_file_label">Open</span>
               </button>
-
+              <!-- feedback button -->
+              <a href="https://share-eu1.hsforms.com/19yeKBNcpQiiOihYfgYBytw2d9pct" rel="nofollow" id="feedback" class="toolbarButton hiddenMediumView" title="Give feedback" tabindex="32"
+                data-l10n-id="feedback">
+                <span data-l10n-id="feedback_label">Feedback</span>
+              </a>
 
               <button id="print" class="toolbarButton hiddenMediumView" title="Print" tabindex="32"
                 data-l10n-id="print">

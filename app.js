@@ -47,7 +47,7 @@ function saveCacheToFile() {
 
 // Route to download and display the PDF
 app.get('/pdf', (req, res) => {
-  const { fileUrl, downloadable } = req.query;
+  const { fileUrl, downloadable, fileTitle } = req.query;
 
   if (!fileUrl) {
     return res.status(400).send('Missing fileUrl parameter');
@@ -56,7 +56,7 @@ app.get('/pdf', (req, res) => {
   // Check if the PDF has already been downloaded
   if (pdfCache.has(fileUrl)) {
     const uniqueFilename = pdfCache.get(fileUrl);
-    const viewerUrl = `/pdfjs/web/${downloadable === 'true' ? 'viewer.html' : 'pdf-viewer.html'}?file=/uploads/${uniqueFilename}`;
+    const viewerUrl = `/pdfjs/web/${downloadable === 'true' ? 'viewer.html' : 'pdf-viewer.html'}?file=/uploads/${uniqueFilename}&title=${encodeURIComponent(fileTitle)}`;
     return res.redirect(viewerUrl);
   }
 
@@ -79,7 +79,7 @@ app.get('/pdf', (req, res) => {
       saveCacheToFile();
 
       // Redirect to the appropriate viewer based on the "downloadable" parameter
-      const viewerUrl = `/pdfjs/web/${downloadable === 'true' ? 'viewer.html' : 'pdf-viewer.html'}?file=/uploads/${uniqueFilename}`;
+      const viewerUrl = `/pdfjs/web/${downloadable === 'true' ? 'viewer.html' : 'pdf-viewer.html'}?file=/uploads/${uniqueFilename}&title=${encodeURIComponent(fileTitle)}`;
       res.redirect(viewerUrl);
     });
 });
